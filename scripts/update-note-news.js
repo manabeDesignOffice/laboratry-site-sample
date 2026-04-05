@@ -36,12 +36,6 @@ function fetchText(url) {
   });
 }
 
-function extractImage(description) {
-  if (!description) return "";
-  const match = description.match(/<img[^>]+src="([^"]+)"/i);
-  return match ? match[1] : "";
-}
-
 (async () => {
   try {
     const xml = await fetchText(RSS_URL);
@@ -52,12 +46,12 @@ function extractImage(description) {
 
     const news = normalized.slice(0, 2).map((item) => ({
       title: item.title,
-      link: item.link,
+      url: item.link,
       date: new Date(item.pubDate).toISOString().slice(0, 10)
     }));
 
-    fs.writeFileSync("news.json", JSON.stringify(news, null, 2), "utf-8");
-    console.log("news.json updated");
+    fs.writeFileSync("data/note-feed.json", JSON.stringify(news, null, 2), "utf-8");
+    console.log("data/note-feed.json updated");
     console.log(news);
   } catch (error) {
     console.error(error);
