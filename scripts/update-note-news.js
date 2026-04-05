@@ -22,9 +22,7 @@ function fetchText(url) {
         }
 
         if (res.statusCode !== 200) {
-          return reject(
-            new Error(`RSS fetch failed: ${res.statusCode} ${res.statusMessage}`)
-          );
+          return reject(new Error(`RSS fetch failed: ${res.statusCode} ${res.statusMessage}`));
         }
 
         let data = "";
