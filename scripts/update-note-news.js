@@ -43,7 +43,7 @@ function fetchText(url) {
     const items = parsed?.rss?.channel?.item || [];
     const normalized = Array.isArray(items) ? items : [items];
 
-    const news = normalized.slice(0, 2).map((item) => ({
+    const news = normalized.map((item) => ({
       title: item.title,
       url: item.link
     }));
