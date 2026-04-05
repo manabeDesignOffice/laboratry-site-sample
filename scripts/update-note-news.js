@@ -1,4 +1,5 @@
 const fs = require("fs");
+const path = require("path");
 const https = require("https");
 const xml2js = require("xml2js");
 
@@ -46,11 +47,15 @@ function fetchText(url) {
 
     const news = normalized.slice(0, 2).map((item) => ({
       title: item.title,
-      url: item.link,
-      date: new Date(item.pubDate).toISOString().slice(0, 10)
+      url: item.link
     }));
 
-    fs.writeFileSync("data/note-feed.json", JSON.stringify(news, null, 2), "utf-8");
+    const outDir = path.join(__dirname, "data");
+    const outFile = path.join(outDir, "note-feed.json");
+
+    fs.mkdirSync(outDir, { recursive: true });
+    fs.writeFileSync(outFile, JSON.stringify(news, null, 2), "utf-8");
+
     console.log("data/note-feed.json updated");
     console.log(news);
   } catch (error) {
