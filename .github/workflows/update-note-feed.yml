@@ -23,7 +23,7 @@ jobs:
 
       - name: Install dependencies
         run: npm install xml2js
-        
+
       - name: Run note update script
         run: node script/update-note-news.js
 
