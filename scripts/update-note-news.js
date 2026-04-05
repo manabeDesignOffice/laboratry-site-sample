@@ -50,11 +50,10 @@ function extractImage(description) {
     const items = parsed?.rss?.channel?.item || [];
     const normalized = Array.isArray(items) ? items : [items];
 
-    const news = normalized.slice(0, 3).map((item) => ({
+    const news = normalized.slice(0, 2).map((item) => ({
       title: item.title,
       link: item.link,
-      date: new Date(item.pubDate).toISOString().slice(0, 10),
-      image: extractImage(item.description || "")
+      date: new Date(item.pubDate).toISOString().slice(0, 10)
     }));
 
     fs.writeFileSync("news.json", JSON.stringify(news, null, 2), "utf-8");
