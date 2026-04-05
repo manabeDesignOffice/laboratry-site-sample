@@ -1,0 +1,10 @@
+{
+  "name": "laboratry-site-sample",
+  "private": true,
+  "scripts": {
+    "update-note-feed": "node update-note-news.js"
+  },
+  "dependencies": {
+    "xml2js": "^0.6.2"
+  }
+}
