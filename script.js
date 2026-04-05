@@ -66,5 +66,10 @@ async function loadNoteTitles(limit, targetSelector, showAllLink = false) {
   }
 }
 
-loadNoteTitles(2, '#latest-note-titles');
-loadNoteTitles(100, '#all-note-titles');
+if (document.querySelector('#latest-note-titles')) {
+  loadNoteTitles(2, '#latest-note-titles');
+}
+
+if (document.querySelector('#all-note-titles')) {
+  loadNoteTitles(100, '#all-note-titles');
+}
