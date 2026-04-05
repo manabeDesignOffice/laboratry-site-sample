@@ -48,7 +48,7 @@ function fetchText(url) {
       url: item.link
     }));
 
-    const outDir = path.join(__dirname, "data");
+    const outDir = path.join(__dirname, "..", "data");
     const outFile = path.join(outDir, "note-feed.json");
 
     fs.mkdirSync(outDir, { recursive: true });
